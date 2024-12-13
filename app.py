@@ -33,6 +33,7 @@ with col2:
     st.subheader("Roadmap")
     roadmap = st.text_area("Enter your roadmap here:")
     uploaded_file = st.file_uploader("Upload Roadmap File (PDF)", type="pdf")
+    expire_minutes=st.number_input("Enter the duration of the meeting")
 
     # Convert uploaded PDF to text
     if uploaded_file:
@@ -55,7 +56,8 @@ if st.button("Submit"):
         payload = {
             "behavior_prompt": final_behavior_prompt,
             "roadmap": roadmap,
-            "emails":emails_list
+            "emails":emails_list,
+            "expire_mintues": expire_minutes
         }
 
         # Connect to the endpoint
